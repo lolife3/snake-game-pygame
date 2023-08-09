@@ -37,10 +37,10 @@ class Snake:
         self.direction = Vector2(0,-20)
         self.body = [Vector2(self.x, self.y), Vector2(self.x, self.y+20), Vector2(self.x, self.y+40),]
         
-        self.head_image = pygame.transform.scale(pygame.image.load("./snakehead.png"), (20,20))
-        self.body_image = pygame.transform.scale(pygame.image.load("./snakebody.png"), (20,20))
+        self.head_image = pygame.transform.scale(pygame.image.load("./img/snakehead.png"), (20,20))
+        self.body_image = pygame.transform.scale(pygame.image.load("./img/snakebody.png"), (20,20))
         
-        self.rotated_head_image = pygame.transform.scale(pygame.image.load("./snakehead.png"), (20,20))
+        self.rotated_head_image = pygame.transform.scale(pygame.image.load("./img/snakehead.png"), (20,20))
         
         
     def draw_snake(self):
@@ -103,7 +103,7 @@ class Apple:
     def __init__(self):
         self.x = 50 + (random.randint(0, GRID_SIZE[0]-1) * CELL_SIZE)
         self.y = 50 + (random.randint(0, GRID_SIZE[1]-1) * CELL_SIZE)
-        self.apple_image = pygame.transform.scale(pygame.image.load("./apple.png"), (20,20))
+        self.apple_image = pygame.transform.scale(pygame.image.load("./img/apple.png"), (20,20))
         
     
     def draw_apple(self):
@@ -117,7 +117,7 @@ class Apple:
 
 def main():    
     pygame.init()
-    pygame.mixer.music.load("eating.mp3")
+    pygame.mixer.music.load("img/eating.mp3")
     pygame.mixer.music.set_volume(0.3)
     running = True
     
@@ -153,7 +153,7 @@ def main():
             
             case "newapple":
                 board.score += 1
-                snake.body.append(snake.body[-1] + snake.direction)
+                snake.body.append(snake.body[-1] + (-snake.direction))
                 apple = Apple()
 
 
